@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('auth/{provider}',[
+    'as' => 'auth.provider.login',
+    'uses' => 'Auth\RegisterController@redirectToProvider',
+]);
+Route::get('auth/{provider}/callback',[
+    'as' => 'auth.provider.login',
+    'uses' => 'Auth\RegisterController@handleProviderCallback',
+]);
+Route::post('login',[
+    'as' => 'auth.auth.login',
+    'uses' => 'Auth\LoginController@postLogin',
+]);

@@ -68,4 +68,50 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    /**
+     * Redirect the user to the provider authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from provider.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+     try {
+        $socialUser = Socialite::driver($provider)->user();
+    } catch (\Exception $e) {
+        return redirect('/');
+    }
+    $socialProvider = User::where('provider_id',$socialUser->getId())->first();
+
+    if(!$socialProvider)
+    {
+        $username=explode("@",$socialUser->getEmail())[0];
+        $img = file_get_contents($socialUser->getAvatar());
+        $file = $_SERVER['DOCUMENT_ROOT'].'/storage/app/images/'.$socialUser->getId().'.jpg';
+        file_put_contents($file, $img);
+        $user = User::firstOrCreate(array(
+            'provider_id'=>$socialUser->getId(),
+            'username' => $username,
+            'password' => bcrypt(rand(1000,99999)),
+            'fullname' => $socialUser->getName(),
+            'email' => $socialUser->getEmail(),
+            'avatar' => $socialUser->getId().'.jpg',
+            'is_admin' => 2
+            )
+        );
+    }else{
+        $user = $socialProvider;
+    }
+    auth()->login($user);
+    return redirect('/home');
+}
 }
