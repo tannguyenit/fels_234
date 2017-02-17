@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Socialite;
+use Auth;
+use Hash;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -36,4 +41,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    public function postLogin(Request $request)
+    {
+        $email = $request->email;
+        $password = $request->password;
+        $user = User::Login($email);
+        if (count($user) == 0) {
+            return redirect()->action('IndexController@index')->with(['error' => trans('layout.not_register')]);
+        } elseif (Auth::attempt([
+                'email' => $email,
+                'password' => $password,
+            ])) {
+            return redirect()->action('IndexController@index');
+        } else {
+            return redirect()->action('IndexController@index')->with(['error' => trans('layout.fail')]);
+        }
+
+    }
+
 }
