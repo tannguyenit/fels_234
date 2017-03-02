@@ -51,13 +51,13 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $fileName  = $request->file('images')->store('public');
-        $image = md5(time()) . '' . explode('/', $fileName)[config('setting.admin')];
+        $avatar = md5(time()) . '' . explode('/', $fileName)[config('setting.admin')];
         Storage::move($fileName, 'public/' . $avatar);
         $user = new $this->user();
         $user->username = $request->username;
         $user->fullname = $request->fullname;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = $request->password;
         $user->avatar = $avatar;
         $user->is_admin = config('setting.admin');
         if ($user->save()) {
@@ -114,7 +114,7 @@ class UserController extends Controller
             if ($request->hasFile('imagesUpdate')) {
                 Storage::delete('public/' . $user->avatar);
                 $fileName  = $request->file('imagesUpdate')->store('public');
-                $image = md5(time()) . '' . explode('/', $fileName)[config('setting.admin')];
+                $avatar = md5(time()) . '' . explode('/', $fileName)[config('setting.admin')];
                 Storage::move($fileName, 'public/' . $avatar);
             }
 
@@ -123,7 +123,7 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->avatar = $avatar;
             if (!empty($request->password)) {
-                $user->password = Hash::make($request->password);
+                $user->password = $request->password;
             }
 
             if ($user->save()) {

@@ -98,7 +98,15 @@ Route::group(['middleware' => 'auth'], function () {
         'as'=>'member.following',
         'uses'=>'UserController@following',
     ]);
-    Route::post('delete', [
+    Route::post('question', [
+        'as'=>'learned.question',
+        'uses'=>'LearnController@change_question',
+    ]);
+    Route::post('answer', [
+        'as'=>'learned.answer',
+        'uses'=>'LearnController@answer',
+    ]);
+    Route::post('deleteCourse', [
         'as'=>'course.deleteCourse',
         'uses'=>'LearnController@deleteCourse',
     ]);

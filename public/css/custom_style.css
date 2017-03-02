@@ -92,7 +92,7 @@ h3.icon-box-title {
 button.next-button {
     display: inline-block;
 }
-.progress-bar{
+.progress-bar {
     max-width: 100%;
 }
 .activitys{
@@ -112,4 +112,25 @@ background: #48b379 !important;
 .people-rowsa{
     height: 588px;
     overflow-y: scroll;
+}
+#gardening-area {
+    padding-top: 25px;
+}
+.shiny-box:hover {
+    background-color: #bb8fc9;
+    color: #fff;
+}
+.background-left div {
+    padding: 3px
+}
+.list-info li {
+    font-size: 24px
+}
+.disable {
+    pointer-events: none;
+    cursor: default;
+}
+#central-area {
+    padding-top: 5%;
+
 }

@@ -1,5 +1,6 @@
 @extends('templates.public.template')
 @section('content')
+
 <div id="page-head" class="">
     <div class="inner">
         <div class="course-header course-header-fat clearfix">

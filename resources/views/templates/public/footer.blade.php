@@ -31,6 +31,8 @@
     </div>
 </footer>
 {{ Form::hidden('confirm', trans('layout.confirm'), ["id" => 'confirmDelete']) }}
-<a href="#" id="back-to-top"> <i class="fa fa-chevron-up"></i> </a>
+{{ Form::hidden('idLesson', Request::segment(4), ["id" => 'idLesson']) }}
+{{ Form::hidden('idCourse', Request::segment(2), ["id" => 'idCourse']) }}
+<a href="#" id="back-to-top" data-action-question="{{ URL::action('LearnController@change_question') }}" data-action-answer="{{ URL::action('LearnController@answer') }}"> <i class="fa fa-chevron-up"></i> </a>
 </div>
 </div>
