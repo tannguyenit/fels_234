@@ -27,7 +27,7 @@ class CourseController extends Controller
         WordAnswer $wordAnswer,
         Lesson $lesson,
         Category $category,
-        Course $course
+        Course $course,
     ) {
         $this->lessonWord = $lessonWord;
         $this->learned = $learned;
@@ -63,7 +63,7 @@ class CourseController extends Controller
         foreach ($arCourse->lessons as $key => $value) {
             $totalNumber = $this->lessonWord->totalNumber($value->id);      // Get total number of questions of a lesson
             $learned = $this->learned->getLearn($value->id, $idUser);       // Get all questions of a lesson learned
-            $arCourse['lessons'][$key]['all'] = $totalNumber;                // Push a array $arCourse
+            $arCourse['lessons'][$key]['all'] = $totalNumber;               // Push a array $arCourse
             $arCourse['lessons'][$key]['learned'] = $learned;
         }
 
@@ -94,12 +94,12 @@ class CourseController extends Controller
         return view('course.review', compact('arReview', 'getReview'));
     }
 
-    public function lesson($id, $slug, $lessonId)
+    public function lesson($id, $slug, $level)
     {
-        $name = $this->lessonWord->getLessonName($id);
+        $name = $this->lessonWord->getLessonName($id, $level);
         if (count($name)) {
-            $lesson = $this->lessonWord->getLessonWord($lessonId);
-            $learned = $this->learned->getLearn($id, Auth()->id());
+            $lesson = $this->lessonWord->getLessonWord($name->id);
+            $learned = $this->learned->getLearn($name->id, Auth()->id());
             return view('course.word', compact('lesson', 'name', 'id', 'slug', 'learned'));
         }
 

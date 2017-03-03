@@ -15,7 +15,6 @@ class Lesson extends Model
 
     public $timestamps = true;
 
-
     public function lessonWords()
     {
         return $this->hasMany(LessonWord::class);
@@ -63,5 +62,10 @@ class Lesson extends Model
         return Lesson::with(['lessonWords' => function ($query) {
             $query->with('word', 'wordAnswer');
         }])->where('lessons.id', $id)->first();
+    }
+
+    public function checkLevel($courseId)
+    {
+        return Lesson::where('course_id', $courseId)->orderBY('level', 'DESC')->first();
     }
 }

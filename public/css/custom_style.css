@@ -37,6 +37,9 @@ h3.icon-box-title {
     border-right: 0px;
     min-height: 500px
 }
+.level-ico.level-ico-plant.level-ico-s {
+    background-position: 0px 0;
+}
 .overlay-black:before,
 .overlay-primary:before {
     background: rgba(0, 0, 0, 0.58);
@@ -104,7 +107,7 @@ button.next-button {
 
 .profile_User{
     color: #eee9dc;
-background: #48b379 !important;
+    background: #48b379 !important;
 }
 .relative label{
   padding-top: 2%;
@@ -132,5 +135,7 @@ background: #48b379 !important;
 }
 #central-area {
     padding-top: 5%;
-
+}
+.levels .level .level-icon {
+    height: 107px !important;;
 }

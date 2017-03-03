@@ -1,15 +1,33 @@
 @extends('templates.public.template')
 
 @section('content')
+
 {{ Html::style('css/profile.css') }}
-<div id="page-head" class="">
+
+<div id="page-head">
     <div class="inner">
         <div class="avatar-wrap">
             <img src="{{ asset(getAvatar($arUser['avatar'])) }}" alt=""> </div>
         <div class="col-main">
             <div class="user-details">
                 <div class="user-actions">
-                    <a href="#" class="button" data-toggle="modal" data-target="#register"><span class="ico ico-edit"></span> {{ trans('layout.editprofile') }}</a>
+                    @if($checkUser == config('setting.admin'))
+                        <a href="#" class="button" data-toggle="modal" data-target="#register"><span class="ico ico-edit"></span> {{ trans('layout.editprofile') }}</a>
+                    @elseif($checkUser == config('setting.member'))
+                        <a class="mempal-button button " data-fullname="{{ $arUser['fullname'] }}" data-user-id="{{ $arUser['id'] }}" data-follow="{{ trans('layout.follow') }}"  data-unfollow="{{ trans('layout.unfollow') }}" data-role="mempal-button" data-action="{{ URL::action('UserController@following') }}">
+                            {!! Form::hidden('hidden', config('setting.admin'), []) !!}
+                            <span class="text">
+                                {{ trans('layout.unfollow') }}
+                            </span>
+                        </a>
+                    @else
+                        <a class="mempal-button button green" data-fullname="{{ $arUser['fullname'] }}" data-user-id="{{ $arUser['id'] }}" data-follow="{{ trans('layout.follow') }}"  data-unfollow="{{ trans('layout.unfollow') }}" data-role="mempal-button" data-action="{{ URL::action('UserController@following') }}">
+                            {!! Form::hidden('hidden', config('setting.zero'), []) !!}
+                            <span class="text">
+                                {{ trans('layout.follow') }}
+                            </span>
+                        </a>
+                    @endif
                 </div>
                 <h1>{{ $arUser['fullname'] }}</h1>
                 <div class="content-badges">
@@ -59,19 +77,23 @@
     <div class="container col-xs-8">
         <div class="well profile_User">
            <ul id='timeline'>
-               @foreach ($activity->activities as $element => $value)
-                    <li class='work'>
-                        {!! Form::radio('works', '', 'checked', ['class' => 'radio', 'id' => 'work5']) !!}
-                        <div class="relative">
-                            <label for='work5'>{{ $value->action_type }}</label>
-                            <span class='date'>{{ date_format($value->created_at, 'h:i d.m.y')  }}</span>
-                            <span class='circle'></span>
-                        </div>
-                        <div class='content'>
-                          <p></p>
-                        </div>
-                    </li>
-               @endforeach
+                @if($checkUser == config('setting.zero'))
+                    <h3>{{ trans('layout.pleasefollow') . $arUser['fullname'] }}</h3>
+                @else
+                   @foreach ($activity->activities as $element => $value)
+                        <li class='work'>
+                            {!! Form::radio('works', '', '', ['class' => 'radio', 'id' => 'work5']) !!}
+                            <div class="relative">
+                                <label for='work5'>{{ $value->action_type }}</label>
+                                <span class='date'>{{ date_format($value->created_at, 'h:i d.m.y')  }}</span>
+                                <span class='circle'></span>
+                            </div>
+                            <div class='content'>
+                              <p></p>
+                            </div>
+                        </li>
+                   @endforeach
+               @endif
             </ul>
         </div>
     </div>
@@ -145,7 +167,6 @@
     </div>
 </div>
 <div class="clearfix"></div>
-<!-- Modal -->
 <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
      <div class="modal-dialog" role="document">
         <div class="modal-content">

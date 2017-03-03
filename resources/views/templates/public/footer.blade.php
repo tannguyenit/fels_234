@@ -33,6 +33,6 @@
 {{ Form::hidden('confirm', trans('layout.confirm'), ["id" => 'confirmDelete']) }}
 {{ Form::hidden('idLesson', Request::segment(4), ["id" => 'idLesson']) }}
 {{ Form::hidden('idCourse', Request::segment(2), ["id" => 'idCourse']) }}
-<a href="#" id="back-to-top" data-action-question="{{ URL::action('LearnController@change_question') }}" data-action-answer="{{ URL::action('LearnController@answer') }}"> <i class="fa fa-chevron-up"></i> </a>
+<a href="#" id="back-to-top" data-count-array="{{ isset($countArray) ? $countArray : NUll }}" data-action-question="{{ URL::action('LearnController@change_question') }}" data-action-answer="{{ URL::action('LearnController@answer') }}"> <i class="fa fa-chevron-up"></i> </a>
 </div>
 </div>
