@@ -1,1 +1,1 @@
-<p>code: {{ $data }}</p>
+<p>code: {{ $code }}</p>

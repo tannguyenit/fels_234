@@ -93,4 +93,16 @@ class CourseController extends Controller
         }
         return view('course.review', compact('arReview', 'getReview'));
     }
+
+    public function lesson($id, $slug, $lessonId)
+    {
+        $name = $this->lessonWord->getLessonName($id);
+        if (count($name)) {
+            $lesson = $this->lessonWord->getLessonWord($lessonId);
+            $learned = $this->learned->getLearn($id, Auth()->id());
+            return view('course.word', compact('lesson', 'name', 'id', 'slug', 'learned'));
+        }
+
+        return redirect()->back();
+    }
 }

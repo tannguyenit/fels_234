@@ -8,6 +8,8 @@
     {{ Html::style('css/custom_style.css') }}
     {{ Html::style('bower_components/bootstrap/dist/css/bootstrap.min.css') }}
     {{ Html::style('bower_components/font-awesome/css/font-awesome.min.css') }}
+    {{ Html::script('bower_components/jquery/dist/jquery.min.js') }}
+    {{ Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js') }}
     <meta name="_token" content="{{ csrf_token() }}">
 </head>
 
@@ -17,8 +19,6 @@
 
     @yield('content')
 
-    {{ Html::script('bower_components/jquery/dist/jquery.min.js') }}
-    {{ Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js') }}
     {{ Html::script('js/responsivevoice.js') }}
     {{ Html::script('js/custom.js') }}
     {{ Html::script('Admin/js/script.js') }}

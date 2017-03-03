@@ -28243,7 +28243,7 @@ only screen and (min-resolution: 1.5dppx) {
 .garden-box.multiple_choice ol.choices.grid li,
 .garden-box.video-pre-presentation ol.choices.grid li {
     clear: none;
-    width: 200.42857px;
+    width: 100%px;
     float: left;
     display: block;
     clear: both
@@ -43828,7 +43828,7 @@ background-color: #FFFFFF;
 .course-header.course-header-fat .course-details{color:#fff;}
 #page-head .inner h1{color: #fff;
     font-weight: bold;}
-.levels .level .level-icon{height: 125px;
+.levels .level .level-icon{height: 100px;
     overflow: hidden;
     background-color: #f5f5f5;
     margin: 10px 10px 0 10px;

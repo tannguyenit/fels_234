@@ -91,9 +91,9 @@ class ForgotPasswordController extends Controller
         if ($code == $request->code) {
             $users = User::checkMail($request->email);
 
-            if (count($users) > 0) {
+            if (count($users)) {
                 $user = User::find($users[0]->id);
-                $user->password = Hash::make($request->password);
+                $user->password = $request->password;
                 $user->save();
                 $login = [
                     'email' => $request->email,

@@ -49,4 +49,25 @@ class LessonWord extends Model
     {
         return LessonWord::where('lesson_id', $id)->count();
     }
+
+    public function getLessonWord($lessonId)
+    {
+        return LessonWord::with('wordAnswer', 'word')->where('lesson_id', $lessonId)->orderByRaw('RAND()')->get();
+    }
+
+    public function checkLessonWord($lessonId, $id)
+    {
+        return LessonWord::with('wordAnswer', 'word')->where('lesson_id', $lessonId)->where('id', '<>', $id)->orderByRaw('RAND()')->take(3)->get();
+    }
+
+    public function getLesson($id)
+    {
+        return LessonWord::with('wordAnswer', 'word')->where('lesson_id', $id)->get();
+    }
+
+    public function getLessonName($id)
+    {
+        return Lesson::where('course_id', $id)->first();
+    }
+
 }
