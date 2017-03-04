@@ -100,14 +100,14 @@
     <div class="container col-xs-4 pull-right">
         <ul class="nav nav-tabs">
             <li class="active">
-                <a data-toggle="tab" href="#home">{{ trans('layout.follower') }}</a>
+                <a data-toggle="tab" href="#follower">{{ trans('layout.follower') }}</a>
             </li>
             <li>
-                <a data-toggle="tab" href="#menu1">{{ trans('layout.following') }}</a>
+                <a data-toggle="tab" href="#following">{{ trans('layout.following') }}</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
+            <div id="follower" class="tab-pane fade in active">
                 <div class="box box-onboarding box-follow col-xs-12">
                     <div class="people-rowsa row" data-user-follow="{{ $arUser['id'] }}">
                         @foreach ($arFollower as $key => $element)
@@ -135,7 +135,7 @@
                     </div>
                 </div>
             </div>
-            <div id="menu1" class="tab-pane fade">
+            <div id="following" class="tab-pane fade">
                 <div class="box box-onboarding box-follow col-xs-12">
                     <div class="people-rowsa row" data-user-follow="{{ $arUser['id'] }}">
                         @foreach ($arFollowing as $key => $element)

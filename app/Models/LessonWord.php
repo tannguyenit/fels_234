@@ -60,7 +60,11 @@ class LessonWord extends Model
     public function checkLessonWord($lessonId, $id)
     {
         return LessonWord::with('wordAnswer', 'word')
-            ->where('lesson_id', $lessonId)->where('id', '<>', $id)->orderByRaw('RAND()')->take(3)->get();
+            ->where('lesson_id', $lessonId)
+            ->where('id', '<>', $id)
+            ->orderByRaw('RAND()')
+            ->take(3)
+            ->get();
     }
 
     public function getLesson($id)

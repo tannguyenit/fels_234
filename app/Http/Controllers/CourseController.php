@@ -27,7 +27,7 @@ class CourseController extends Controller
         WordAnswer $wordAnswer,
         Lesson $lesson,
         Category $category,
-        Course $course,
+        Course $course
     ) {
         $this->lessonWord = $lessonWord;
         $this->learned = $learned;
@@ -67,8 +67,8 @@ class CourseController extends Controller
             $arCourse['lessons'][$key]['learned'] = $learned;
         }
 
-        $arLearn = $this->learned->getLearnOfCourse($id, $idUser);         // Check the user has learned or not
-        $countVocabulary = $this->lesson->getAllVocabulary($id);           // Count the total vocabulary of a lesson
+        $arLearn = $this->learned->getLearnOfCourse($id, $idUser);          // Check the user has learned or not
+        $countVocabulary = $this->lesson->getAllVocabulary($id);            // Count the total vocabulary of a lesson
         $arLearns = [
             'resutl' => $arLearn->number,
             'total' => $countVocabulary,

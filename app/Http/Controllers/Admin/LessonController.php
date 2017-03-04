@@ -32,7 +32,7 @@ class LessonController extends Controller
         LessonWord $lessonWord,
         Word $word,
         Learned $learned,
-        WordAnswer $wordAnswer,
+        WordAnswer $wordAnswer
     ) {
         $this->lesson = $lesson;
         $this->lessonWord = $lessonWord;
@@ -131,7 +131,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

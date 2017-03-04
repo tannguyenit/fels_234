@@ -21,7 +21,7 @@ class LearnController extends Controller
     function __construct(
         Lesson $lesson,
         LessonWord $lessonWord,
-        Learned $learned,
+        Learned $learned
     ) {
         $this->lessonWord = $lessonWord;
         $this->lesson = $lesson;
@@ -97,7 +97,7 @@ class LearnController extends Controller
             $LessonWord = $this->lessonWord->getLessonWord($checkLesson->id)->toArray();
 
             if (!Session::has('arQuestion')) {
-                    Session::push('arQuestion', $lessonWord);
+                Session::push('arQuestion', $lessonWord);
             }
 
             $lessonWordSession = Session::get('arQuestion');

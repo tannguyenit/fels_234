@@ -23,7 +23,7 @@ class UserController extends Controller
     /**
      * Following with member orther
      *
-     * @param $idUser follower, $idUser following
+     * @param $idUser follower, $idUser following.
      *
      * @return void
      */
@@ -36,7 +36,7 @@ class UserController extends Controller
         Learned $learned,
         Lesson $lesson,
         User $user,
-        Relationship $relationship,
+        Relationship $relationship
     ) {
         $this->learned = $learned;
         $this->lesson = $lesson;

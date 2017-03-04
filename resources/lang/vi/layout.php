@@ -28,7 +28,7 @@
         'regsiter' => 'Đăng ký',
         'share_fb' => 'Chia sẻ',
         'share_tt' => 'Tweet',
-        'letters_should_review' => 'từ cần ôn tập',
+        'letters_should_review' => ' từ cần ôn tập ',
         'google' => 'Đăng nhập bằng tài khoản Google + ',
         'facebook' => 'Đăng nhập bằng tài khoản Facebook  ',
         'twitter' => 'Đăng nhập bằng tài khoản Twitter',
