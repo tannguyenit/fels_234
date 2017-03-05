@@ -1,11 +1,12 @@
 @extends('templates.admin.master')
 
 @section('content')
+
 <div>
     <div class="col-md-12 col-sm-6 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2><i class="fa fa-bars"></i> <small>{{ trans('lesson.lessons.edit_lesson') }}</small></h2>
+                <h2><i class="fa fa-bars"></i><small>{{ trans('lesson.lessons.edit_lesson') }}</small></h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 </ul>
@@ -48,22 +49,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="item form-group">
-                            {!! Form::label('level', trans('lesson.lessons.category_lesson'), ['class' => 'control-label col-sm-2  col-xs-12']) !!}
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select name="level" id="input1" class="form-control">
-                                    <option value="">{{ trans('lesson.lessons.select_lesson') }}</option>
-                                    @for ($i = 1; $i <= 100; $i ++)
-                                        @if($joinLessons->level == $i)
-                                            @php  $selected = "selected='selected'"; @endphp
-                                        @else
-                                            @php $selected = ""; @endphp
-                                        @endif
-                                        <option {{ $selected }} value="{!! $i !!}">{!! trans('lesson.lessons.lesson') . " " . $i !!}</option>
-                                    @endfor
-                                </select>
-                            </div>
-                        </div>
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             {!! Form::label('category', trans('lesson.lessons.category_word'), ['class' => 'control-label col-sm-2  col-xs-12']) !!}
@@ -102,4 +87,5 @@
         </div>
    </div>
 </div>
+
 @endsection

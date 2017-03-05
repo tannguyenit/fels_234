@@ -26,7 +26,6 @@ class LessonRequest extends FormRequest
         return [
             'name' => 'required|unique:lessons,name',
             'course' => 'required',
-            'level' => 'required',
             'number_word' => 'required',
             'image' => 'required',
         ];
@@ -43,7 +42,6 @@ class LessonRequest extends FormRequest
             'name.required' => trans('lesson.lessons.error_name'),
             'name.unique' => trans('lesson.lessons.exits_name'),
             'course.required' => trans('lesson.lessons.error_course'),
-            'level.required' => trans('lesson.lessons.error_level'),
             'number_word.required' => trans('lesson.lessons.error_nember'),
             'image.required' => trans('lesson.lessons.error_images'),
         ];

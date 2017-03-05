@@ -42,7 +42,7 @@ class LessonController extends Controller
         $this->wordAnswer = $wordAnswer;
     }
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource
      *
      * @return \Illuminate\Http\Response
      */
@@ -66,11 +66,19 @@ class LessonController extends Controller
         $image = md5(time()) . '' . explode('/', $fileName)[config('setting.admin')];
 
         Storage::move($fileName, 'public/' . $image);
+        $lessonInfo = $this->lesson->checkLevel($request->course);
+
+        if ($lessonInfo) {
+            $levle = $lessonInfo->level +1;
+        } else {
+             $levle = config('setting.admin');
+        }
+
         $arrLesson = [
             'name' => $request->name,
             'image' => $image,
             'course_id' => $request->course,
-            'level' => $request->level,
+            'level' => $levle,
         ];
 
         DB::beginTransaction();
@@ -123,7 +131,7 @@ class LessonController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -196,7 +204,6 @@ class LessonController extends Controller
             $lesson->name = $request->name;
             $lesson->image = $image;
             $lesson->course_id = $request->course;
-            $lesson->level = $request->level;
 
             if ($lesson->save()) {
                 DB::commit();

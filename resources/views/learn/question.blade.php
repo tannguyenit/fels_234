@@ -1,6 +1,7 @@
 
 @if ($rand == 1)
     <div id="central-area" class="central-area js-central-area" >
+        <h2>{{ trans('layout.questionnumber') }} {{ isset($number) ? $number + 1 : config('setting.admin') }} </h2>
         <div id="boxes">
             <div class="garden-box presentation show-more show-want-mem">
                 <button  class="next-button btn btn-inverse clearfix" title="{{ trans('layout.next') }}" >
@@ -40,6 +41,7 @@
     </div>
 @elseif ($rand == 2)
     <div id="central-area" class="central-area js-central-area wide" >
+        <h2>{{ trans('layout.questionnumber') }} {{ isset($number) ? $number + 1 : config('setting.admin') }} </h2>
         <div id="boxes">
             <div class="garden-box video-pre-presentation show-more">
                 <button  class="next-button btn btn-inverse clearfix" title="{{ trans('layout.next') }}" >
@@ -78,6 +80,7 @@
     </div>
 @elseif ($rand == 3)
     <div id="central-area" class="central-area js-central-area" >
+        <h2>{{ trans('layout.questionnumber') }} {{ isset($number) ? $number + 1 : config('setting.admin') }} </h2>
         <div id="boxes">
             <div class="garden-box multiple_choice">
                 <button  class="next-button btn btn-inverse clearfix" title="{{ trans('layout.next') }}" >
@@ -119,6 +122,7 @@
     </div>
 @elseif ($rand == 4)
     <div id="central-area" class="central-area js-central-area" >
+        <h2>{{ trans('layout.questionnumber') }} {{ isset($number) ? $number + 1 : config('setting.admin') }} </h2>
         <div id="boxes">
             <div class="garden-box multiple_choice">
                 <button  class="next-button btn btn-inverse clearfix" title="{{ trans('layout.next') }}" >
@@ -165,6 +169,7 @@
     </div>
 @elseif ($rand == 0)
     <div id="central-area" class="central-area js-central-area" >
+        <h2>{{ trans('layout.questionnumber') }} {{ isset($number) ? $number + 1 : config('setting.admin') }} </h2>
         <div id="boxes">
             <div class="garden-box multiple_choice">
                 <button  class="next-button btn btn-inverse clearfix" title="{{ trans('layout.next') }}" >
