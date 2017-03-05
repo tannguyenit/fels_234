@@ -10,7 +10,7 @@ class LessonWord extends Model
         'name',
         'lesson_id',
         'word_id',
-        'word_answer_id'
+        'word_answer_id',
     ];
 
     public $timestamps = true;
@@ -52,12 +52,19 @@ class LessonWord extends Model
 
     public function getLessonWord($lessonId)
     {
-        return LessonWord::with('wordAnswer', 'word')->where('lesson_id', $lessonId)->orderByRaw('RAND()')->get();
+        return LessonWord::with('wordAnswer', 'word')
+            ->where('lesson_id', $lessonId)
+            ->orderByRaw('RAND()')->get();
     }
 
     public function checkLessonWord($lessonId, $id)
     {
-        return LessonWord::with('wordAnswer', 'word')->where('lesson_id', $lessonId)->where('id', '<>', $id)->orderByRaw('RAND()')->take(3)->get();
+        return LessonWord::with('wordAnswer', 'word')
+            ->where('lesson_id', $lessonId)
+            ->where('id', '<>', $id)
+            ->orderByRaw('RAND()')
+            ->take(3)
+            ->get();
     }
 
     public function getLesson($id)
@@ -65,9 +72,9 @@ class LessonWord extends Model
         return LessonWord::with('wordAnswer', 'word')->where('lesson_id', $id)->get();
     }
 
-    public function getLessonName($id)
+    public function getLessonName($id, $level)
     {
-        return Lesson::where('course_id', $id)->first();
+        return Lesson::where('course_id', $id)->where('level', $level)->first();
     }
 
 }

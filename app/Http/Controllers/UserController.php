@@ -23,7 +23,7 @@ class UserController extends Controller
     /**
      * Following with member orther
      *
-     * @param $idUser follower, $idUser following
+     * @param $idUser follower, $idUser following.
      *
      * @return void
      */
@@ -86,20 +86,31 @@ class UserController extends Controller
     /**
      * Following with member orther
      *
-     * @param $idUser follower, $idUser following
+     * @param $username following
      *
      * @return void
      */
     public function index($username)
     {
         $arUser = User::where('username', $username)->first();
+
+        if ($arUser->id != Auth()->id()) {
+            $checkFollow = $this->relationship->checkFollow($arUser->id);
+            if($checkFollow){
+                $checkUser = config('setting.member');
+            } else {
+                $checkUser = config('setting.zero');
+            }
+        } else {
+            $checkUser = config('setting.admin');
+        }
         if (count($arUser)) {
             $arFollower = $this->user->getFollower($arUser->id);
             $arFollowing = $this->user->getFollowing($arUser->id);
-            $arLearns = $this->learned->getCourse($arUser->id);
+            $arLearns = $this->learned->getScores($arUser->id);
             $activity = $this->user->getActivity($arUser->id);
 
-            return view('user.index', compact('arUser', 'activity', 'arFollowing', 'arFollower', 'arLearns'));
+            return view('user.index', compact('arUser', 'checkUser', 'activity', 'arFollowing', 'arFollower', 'arLearns'));
         } else {
             return redirect()->action('IndexController@index')->with(['result' => trans('layout.notsearch')]);
         }
@@ -122,6 +133,7 @@ class UserController extends Controller
             $user->fullname = $request->fullname;
             $user->email = $request->email;
             $user->avatar = $avatar;
+
             if (!empty($request->password)) {
                 $user->password = Hash::make($request->password);
             }

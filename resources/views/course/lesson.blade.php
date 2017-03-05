@@ -1,4 +1,5 @@
 @extends('templates.public.template')
+
 @section('content')
 
 <div id="page-head" class="">
@@ -70,9 +71,10 @@
                             <div class="level-index">{{ $element['level'] }}</div>
                             <div class="level-icon">
                                 <i class="level-ico level-ico-s level-ico-plant"></i>
-                                @if (( $element['learned']/$all ) == 1)
+                                @if (( $element['learned']/$all ) >= 1)
                                     <div class="level-status">
                                         <span class="ico ico-complete ico-correct ico-m ico-green"></span>
+                                        <div class="bar bar-success" data-progress="{{ ($element['learned']/$all) * 100 }}"></div>
                                     </div>
                                 @else
                                     <div class="level-status">
@@ -91,4 +93,5 @@
         </div>
     </div>
 </div>
+
 @stop

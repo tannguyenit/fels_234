@@ -37,6 +37,9 @@ h3.icon-box-title {
     border-right: 0px;
     min-height: 500px
 }
+.level-ico.level-ico-plant.level-ico-s {
+    background-position: 0px 0;
+}
 .overlay-black:before,
 .overlay-primary:before {
     background: rgba(0, 0, 0, 0.58);
@@ -54,7 +57,7 @@ h3.icon-box-title {
     padding: 7px 10px !important;
 }
 .course-box h3 .inner {
-    padding-top: 20px
+    padding-top: 20px;
 }
 #content {
     background-image: url('https://d107cgb5lgj7br.cloudfront.net/img/backgrounds/noise-grey.v1.png');
@@ -104,7 +107,7 @@ button.next-button {
 
 .profile_User{
     color: #eee9dc;
-background: #48b379 !important;
+    background: #48b379 !important;
 }
 .relative label{
   padding-top: 2%;
@@ -121,10 +124,10 @@ background: #48b379 !important;
     color: #fff;
 }
 .background-left div {
-    padding: 3px
+    padding: 3px;
 }
 .list-info li {
-    font-size: 24px
+    font-size: 24px;
 }
 .disable {
     pointer-events: none;
@@ -132,5 +135,7 @@ background: #48b379 !important;
 }
 #central-area {
     padding-top: 5%;
-
+}
+.levels .level .level-icon {
+    height: 107px !important;
 }

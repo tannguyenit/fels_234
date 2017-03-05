@@ -1,7 +1,8 @@
 @extends('templates.public.template')
 
 @section('content')
-<div id="content" class="">
+
+<div id="content">
     <div class="container container-main">
         @if ($name->level > 1)
         <a href="{{ route('course.lesson', [$id, $slug, $name->level - 1, trans('layout.url.back')]) }}" class="level-nav level-nav-prev" title="" >
@@ -19,12 +20,12 @@
                     <strong class="level-number">
                         {{ trans('layout.level') . $name->level }}
                     </strong>
-                    <i class="level-ico level-ico-plant"></i>
+                    <i class="level-ico level-ico-s level-ico-plant"></i>
                 </div>
                 <div class="infos">
                     <h3 class="progress-box-title"> {{ $name->name }} </h3>
-                    {{ $learned . ' /' . count($lesson) }}
-                    <div class="progress" title="" data-placement="bottom" data-original-title="learned">
+                    {{ $learned . ' / ' . count($lesson) . trans('layout.char') }}
+                    <div class="progress" data-placement="bottom" data-original-title="learned">
                         <span class="bar bar-success" data-progress="{{ ($learned/count($lesson)) * 100 }}"></span>
                     </div>
                 </div>
@@ -37,7 +38,7 @@
                 <div class="clear"></div>
             </div>
             <h4> {{ count($lesson) . trans('layout.char')}} </h4>
-            <div class="things clearfix" data-column-a="1" data-column-b="2">
+            <div class="things clearfix">
                 @foreach ($lesson as $element)
                 <div class="thing text-text">
                     <div class="col_a col text">
@@ -51,4 +52,5 @@
             </div>
         </div>
     </div>
+
 @stop
