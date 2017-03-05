@@ -107,7 +107,7 @@ class RegisterController extends Controller
             if ($socialUser->getEmail()) {
                 $username = explode('@', $socialUser->getEmail())[0];
                 $checkUser = $this->user->checkUsername($username);
-                if ($checkUser > 0) {
+                if ($checkUser) {
                     $username = $username . '_' . rand(0, 99);
                 }
             } else {

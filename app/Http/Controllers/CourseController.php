@@ -99,10 +99,11 @@ class CourseController extends Controller
         $name = $this->lessonWord->getLessonName($id, $level);
         if (count($name)) {
             $lesson = $this->lessonWord->getLessonWord($name->id);
-            $learned = $this->learned->getLearn($name->id, Auth()->id());
-            return view('course.word', compact('lesson', 'name', 'id', 'slug', 'learned'));
+            if(count($lesson)) {
+                $learned = $this->learned->getLearn($name->id, Auth()->id());
+                return view('course.word', compact('lesson', 'name', 'id', 'slug', 'learned'));
+            }
         }
-
         return redirect()->back();
     }
 }

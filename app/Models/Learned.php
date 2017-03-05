@@ -37,15 +37,15 @@ class Learned extends Model
         return $this->belongsTo(LessonWord::class);
     }
 
-    public function getCourse($id_user)
+    public function getCourse($userId)
     {
         $arLearn = Learned::with(['course' => function ($query) {
             $query->with(['lessons' => function ($query) {
                 $query->with('lessonWords');
             }]);
-        }])->select('*', DB::raw('count(learneds.course_id) as resutl'))
-            ->where('user_id', $id_user)
-            ->groupBy('learneds.course_id')
+        }])->select('*')
+            ->where('user_id', $userId)
+            ->groupBy('course_id')
             ->get();
         $arLearns = [];
         foreach ($arLearn as $value) {

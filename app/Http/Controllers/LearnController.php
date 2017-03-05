@@ -32,17 +32,13 @@ class LearnController extends Controller
     {
         if ($action == 'start') {
             $checkLesson = $this->lessonWord->getLessonName($id, $level);
-
             if ($checkLesson) {
                 $name = $this->lessonWord->getLesson($checkLesson->id);
-
                 $lessonWord = $this->lessonWord->getLessonWord($checkLesson->id)->toArray();
-
                 if (!Session::has('arQuestion')) {
                     Session::put('arQuestion', $lessonWord);
                 }
                 $lessonWordSession = Session::get('arQuestion');
-
                 $checkLessonWord = $this->lessonWord->checkLessonWord($checkLesson->id, $lessonWordSession[0]['id'])->toArray();
                 $question = $lessonWordSession[0];
                 $checkLessonWord[3] = $question;
@@ -102,7 +98,7 @@ class LearnController extends Controller
 
             $lessonWordSession = Session::get('arQuestion');
 
-            if ($number == count($LessonWord)) {
+            if ($number >= count($LessonWord)) {
                 Session::forget('arQuestion');
 
                 return config('setting.admin');

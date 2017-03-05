@@ -104,24 +104,12 @@
                                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                                         <select name="number_word" id="input2" class="form-control">
                                                             <option value="">{{ trans('lesson.lessons.select_word') }}</option>
-                                                            @for ($i = 1; $i <= 20; $i ++)
+                                                            @for ($i = 4; $i <= 20; $i ++)
                                                                 <option value="{!! $i !!}">{!! trans('lesson.lessons.add_word') . " " . $i !!}</option>
                                                             @endfor
                                                         </select>
                                                     </div>
                                                 </div>
-                                                @for($i = 0; $i <4; $i++)
-                                                    <div class="item form-group">
-                                                        {!! Form::label('add_word', trans('layout.words'), ['class' => 'control-label col-sm-2  col-xs-12']) !!}
-                                                        <div class="col-sm-3 col-xs-12">
-                                                            {!! Form::text('word[]', '', ['required' => 'required', 'class' => 'form-control col-md-7 col-xs-12']) !!}
-                                                        </div>
-                                                         {!! Form::label('meaningWords', trans('layout.meaning'), ['class' => 'control-label col-sm-1 col-xs-12']) !!}
-                                                        <div class="col-sm-5 col-xs-12">
-                                                             {!! Form::text('meaningWords[]', '', ['required' => 'required', 'class' => 'form-control col-md-7 col-xs-12']) !!}
-                                                        </div>
-                                                    </div>
-                                                @endfor
                                                 <div class="append_word"></div>
                                                 <div class="ln_solid"></div>
                                                 <div class="form-group">

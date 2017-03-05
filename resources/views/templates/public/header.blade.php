@@ -72,14 +72,14 @@
             <ul class='btn_login pull-right list-unstyled col-xs-3'>
                 <li class="col-xs-6">
                     <button type="button" class="btn btn-default" id='btn_login' data-toggle="modal" href='#login'>
-                        <a  data-toggle="modal" href='#login' class="nav-item-btn">
+                        <a  data-toggle="modal" class="nav-item-btn">
                             <span class="nav-item-btn-text">{{ trans('layout.login') }}</span>
                         </a>
                     </button>
                 </li>
                 <li class="col-xs-6">
                     <button type="button" class="btn btn-default" id='btn_reigter' data-toggle="modal" href='#register'>
-                        <a  data-toggle="modal" href='#register' class="nav-item-btn">
+                        <a  data-toggle="modal" class="nav-item-btn">
                          <span class="nav-item-btn-text">{{ trans('layout.regsiter') }}</span> </a>
                      </button>
                 </li>

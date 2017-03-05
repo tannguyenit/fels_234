@@ -54,7 +54,7 @@ class LessonWord extends Model
     {
         return LessonWord::with('wordAnswer', 'word')
             ->where('lesson_id', $lessonId)
-            ->orderByRaw('RAND()')->get();
+            ->orderByRaw('random()')->get();
     }
 
     public function checkLessonWord($lessonId, $id)
@@ -62,7 +62,7 @@ class LessonWord extends Model
         return LessonWord::with('wordAnswer', 'word')
             ->where('lesson_id', $lessonId)
             ->where('id', '<>', $id)
-            ->orderByRaw('RAND()')
+            ->orderByRaw('random()')
             ->take(3)
             ->get();
     }

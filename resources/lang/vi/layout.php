@@ -9,6 +9,8 @@
         'home' => 'Trang chủ',
         'course' => 'Khóa học',
         'scores' => 'điểm',
+        'words' => ' Từ',
+        'meaning' => 'Nghĩa',
         'pleasefollow' => 'Hãy theo dõi để xem các hoạt động của ',
         'questionnumber' => 'Câu  ',
         'follower' => 'Người bạn theo dõi',

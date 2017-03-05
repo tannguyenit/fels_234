@@ -8,7 +8,7 @@ class WordAnswer extends Model
 {
     protected $fillable = [
         'content',
-        'corect',
+        'correct',
         'word_id'
     ];
 

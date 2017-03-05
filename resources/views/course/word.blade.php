@@ -1,7 +1,11 @@
 @extends('templates.public.template')
 
 @section('content')
-
+@if(count($lesson) == 0)
+@php $sum = 1 @endphp
+@else
+@php $sum = count($lesson) @endphp
+@endif
 <div id="content">
     <div class="container container-main">
         @if ($name->level > 1)
@@ -24,9 +28,9 @@
                 </div>
                 <div class="infos">
                     <h3 class="progress-box-title"> {{ $name->name }} </h3>
-                    {{ $learned . ' / ' . count($lesson) . trans('layout.char') }}
+                    {{ $learned . ' / ' . $sum . trans('layout.char') }}
                     <div class="progress" data-placement="bottom" data-original-title="learned">
-                        <span class="bar bar-success" data-progress="{{ ($learned/count($lesson)) * 100 }}"></span>
+                        <span class="bar bar-success" data-progress="{{ ($learned/$sum) * 100 }}"></span>
                     </div>
                 </div>
                 <hr>

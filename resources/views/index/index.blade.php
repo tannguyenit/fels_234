@@ -163,6 +163,5 @@
     </div>
 </div>
 </div>
-@stop
-
 @include('templates.public.register')
+@stop
