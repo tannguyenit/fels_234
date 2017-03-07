@@ -280,16 +280,20 @@ class LessonController extends Controller
                 if (count($this->lesson->getLessonInfo($value))) {
                     $lesson = $this->lesson->find($value);
                     $lessonWords = $this->lesson->find($value)->lessonWords;
-
+                    $wordId = [];
+                    $wordAnswerId = [];
+                    $lessonWordId = [];
                     foreach ($lessonWords as $key => $value) {
                         $wordId[] = $value->word_id;
                         $wordAnswerId[] = $value->word_answer_id;
                         $lessonWordId[] = $value->id;
                     }
 
-                    $this->word->whereIn('id', $wordId)->delete();
-                    $this->wordAnswer->whereIn('id', $wordAnswerId)->delete();
-                    $this->lessonWord->whereIn('id', $lessonWordId)->delete();
+                    if ($this->word->whereIn('id', $wordId)->delete()) {
+                        $this->wordAnswer->whereIn('id', $wordAnswerId)->delete();
+                        $this->lessonWord->whereIn('id', $lessonWordId)->delete();
+                    }
+
                     Storage::delete('public/' . $lesson->image);
                     $lesson->delete($value);
                     DB::commit();

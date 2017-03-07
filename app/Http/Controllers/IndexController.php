@@ -34,7 +34,6 @@ class IndexController extends Controller
         if (Auth::user()) {
             return redirect()->action('IndexController@home');
         }
-
         $arCategory = $this->course->getCat();
 
         return view('index.index', compact('arCategory'));

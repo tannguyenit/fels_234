@@ -1,8 +1,8 @@
 /node_modules
-/storage/*.key
 /.idea
 Homestead.json
 Homestead.yaml
 .bowerrc
 bower.json
 composer.lock
+/vendor

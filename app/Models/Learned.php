@@ -43,9 +43,9 @@ class Learned extends Model
             $query->with(['lessons' => function ($query) {
                 $query->with('lessonWords');
             }]);
-        }])->select('*')
+        }])->select('learneds.course_id', DB::raw('COUNT(learneds.course_id) as resutl'))
             ->where('user_id', $userId)
-            ->groupBy('course_id')
+            ->groupBy('learneds.course_id')
             ->get();
         $arLearns = [];
         foreach ($arLearn as $value) {

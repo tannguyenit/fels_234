@@ -39,12 +39,14 @@ class CourseController extends Controller
 
     public function view($id = null)
     {
+        $arCat = $this->category->with('courses')->get();
+
         if (!$id) {
-            $id = $this->course->getCat()[0]->category_id;
+            $id = $arCat[0]->id;
         }
 
         $arCourse = $this->category->getCourse($id);
-        $arCat = $this->category->with('courses')->get();
+
         return view('course.index', compact('arCourse', 'arCat'));
     }
 
@@ -96,6 +98,10 @@ class CourseController extends Controller
 
     public function lesson($id, $slug, $level)
     {
+        if (Session::has('arQuestion')) {
+            Session::forget('arQuestion');
+        }
+
         $name = $this->lessonWord->getLessonName($id, $level);
         if (count($name)) {
             $lesson = $this->lessonWord->getLessonWord($name->id);

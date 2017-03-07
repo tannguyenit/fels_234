@@ -26,7 +26,6 @@ class UpdateLessonRequest extends FormRequest
         return [
             'name' => 'required',
             'course' => 'required',
-            'level' => 'required',
         ];
     }
 
@@ -40,7 +39,6 @@ class UpdateLessonRequest extends FormRequest
         return [
             'name.required' => trans('lesson.lessons.error_name'),
             'course.required' => trans('lesson.lessons.error_course'),
-            'level.required' => trans('lesson.lessons.error_level'),
         ];
     }
 }
